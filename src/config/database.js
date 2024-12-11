@@ -1,5 +1,5 @@
 const{ Sequelize } = require('sequelize');
-const sequelize = new Sequelize('transport-reservation-service','transport_reservation_service_user','9yW9pvByvZupXGj52JOHwckRErbnbgrh',{
+const sequelize = new Sequelize('transport_reservation_service','transport_reservation_service_user','9yW9pvByvZupXGj52JOHwckRErbnbgrh',{
 host:'dpg-ct87ke1opnds73bu40jg-a',
 port: 5432,
 dialect: 'postgres',
