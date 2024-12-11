@@ -1,6 +1,17 @@
 const express = require("express");
+const {connectionTest} = require("./src/config/database");
 const app = express();
 const port = process.env.PORT || 3001;
+
+(async () => {
+  try {
+    await connectionTest();
+    console.log("Database connection successful!");
+  } catch (error) {
+    console.error("Database connection failed:", error);
+    process.exit(1); 
+  }
+})();
 
 app.get("/", (req, res) => res.type('html').send(html));
 
