@@ -22,5 +22,5 @@ async function connectionTest() {
   
   module.exports = {
     sequelize,
-    testConnection,
+    connectionTest,
   };
