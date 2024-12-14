@@ -20,7 +20,4 @@ async function connectionTest() {
     }
   }
   
-  module.exports = {
-    sequelize,
-    connectionTest,
-  };
+  module.exports = sequelize;

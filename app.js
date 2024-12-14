@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/passenger',passengerRoutes);
 
 
-(async () => {
+/*(async () => {
   try {
     await connectionTest();
     console.log("Database connection successful!");
@@ -17,7 +17,7 @@ app.use('/passenger',passengerRoutes);
     console.error("Database connection failed:", error);
     process.exit(1); 
   }
-})();
+})();*/
 
 app.get("/", (req, res) => res.type('html').send(html));
 
