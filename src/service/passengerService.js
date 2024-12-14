@@ -11,4 +11,4 @@ class PassengerServices{
     }
 }
 
-module.exports = PassengerServices;
+module.exports = new PassengerServices();
