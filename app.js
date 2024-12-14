@@ -3,6 +3,12 @@ const {connectionTest} = require("./src/config/database");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const passengerRoutes = require('./src/routes/passengerRoutes');
+
+app.use(express.json());
+app.use('/passenger',passengerRoutes);
+
+
 (async () => {
   try {
     await connectionTest();
