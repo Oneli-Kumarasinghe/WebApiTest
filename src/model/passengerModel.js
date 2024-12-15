@@ -1,13 +1,20 @@
-class Passenger{
-constructor(nic_no,full_name,address,contact_info,email,date_of_birth, password)
-    {
-        this.nic_no= nic_no;
-        this.full_name = full_name;
-        this.address= address;
-        this.contact_info= contact_info;
-        this.email=email;
-        this.date_of_birth=date_of_birth;
-        this.password=password;
-    }
-}
-module.exports = Passenger;
+const {DataTypes } = require('sequelize');
+const sequelize = require('./config/database');
+
+const Passenger = sequelize.define('passenger',{
+    nic_no: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      full_name: DataTypes.STRING,
+      address: DataTypes.STRING,
+      contact_info: DataTypes.INTEGER,
+      email: DataTypes.STRING,
+      date_of_birth: DataTypes.DATE,
+      password: DataTypes.STRING,
+    }, {
+      tableName: 'passenger',
+      timestamps: false,
+    });
+    
+    module.exports = Passenger;
