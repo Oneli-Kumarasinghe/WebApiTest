@@ -5,7 +5,7 @@ class PassengerRepository {
         const passengerCreate = await passengerModel.create(passenger);
         return passengerCreate;
     }
-    async findingByEmail(email){
+    async findByEmail(email){
         return await Passenger.findOne({where: { email }})
       }
 }
