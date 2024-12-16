@@ -12,12 +12,12 @@ class PassengerServices{
 
     async PassengerVerification(email,password){
         const passengerInformation = await PassengerRepository.findByEmail(email);
-        if (!Details) {
+        if (!passengerInformation) {
             throw new Error('Invalid email');
           }
           else{
             const passwordVerification = await bcrypt.compare(password, passengerInformation.password);
-            if (passwordVerificationd) {
+            if (passwordVerification) {
               return passengerInformation;
             }
             else{
