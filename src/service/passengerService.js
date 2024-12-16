@@ -9,6 +9,23 @@ class PassengerServices{
      const passengerCreating= await PassengerRepository.createPassenger(passenger);
      return passengerCreating;
     }
+
+    async PassengerVerification(nic_no){
+        const passengerInformation = await PassengerRepository.findByEmail(email);
+        if (!Details) {
+            throw new Error('Invalid nic');
+          }
+          else{
+            const passwordVerification = await bcrypt.compare(password, passengerInformation.password);
+            if (passwordVerificationd) {
+              return passengerInformation;
+            }
+            else{
+              throw new Error('invalid password');
+            }
+        }
+    }
 }
+
 
 module.exports = new PassengerServices();
