@@ -6,7 +6,7 @@ class PassengerRepository {
         return passengerCreate;
     }
     async findByEmail(email){
-        return await Passenger.findOne({where: { email }})
+        return await passengerModel.findOne({where: { email }})
       }
 }
 
