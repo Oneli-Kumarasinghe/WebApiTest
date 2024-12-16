@@ -10,10 +10,10 @@ class PassengerServices{
      return passengerCreating;
     }
 
-    async PassengerVerification(nic_no){
+    async PassengerVerification(email,password){
         const passengerInformation = await PassengerRepository.findByEmail(email);
         if (!Details) {
-            throw new Error('Invalid nic');
+            throw new Error('Invalid email');
           }
           else{
             const passwordVerification = await bcrypt.compare(password, passengerInformation.password);

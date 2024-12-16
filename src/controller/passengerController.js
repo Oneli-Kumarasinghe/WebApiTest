@@ -13,15 +13,14 @@ class PassengerController {
 
   async passengerLogining(req, res){
     try{
-      const {nic_no, password} = req.body;
-      const loginVerification = await passengerService.PassengerVerification(nic_no, password);
+      const {email, password} = req.body;
+      const loginVerification = await passengerService.PassengerVerification(email, password);
       if (loginVerification) {
         res.status(201).json({ message: 'Passenger verified sucessfully' });
-        console.log('passenger verification sucessful for user with nic : ', nic_no);
+
       }
     }catch(error){
       res.status(401).json({ error: error.message });
-      console.log('failed to verify passenger with nic :', nic_no);
     }
   }
 }
