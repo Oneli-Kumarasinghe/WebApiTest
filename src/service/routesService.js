@@ -6,8 +6,8 @@ class RoutesServices{
         const routes = await RoutesRepository.findAllRoutes();
         return routes;
     }
-    catch(error){
-        throw new Error("error occured :${error.message}");
+    catch (error) {
+        throw new Error(`Error occurred : ${error.message}`);
     }
 
  }

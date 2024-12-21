@@ -13,4 +13,4 @@ class routesController{
         }
     }
 }
-module.exports = routesController;
+module.exports = new routesController();
