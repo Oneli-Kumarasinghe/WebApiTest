@@ -5,4 +5,4 @@ class RoutesRepository {
         return await routesModel.findAll()
       }
 }
-module.exports = new RoutesRepository();
+module.exports = RoutesRepository;
