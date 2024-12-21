@@ -1,9 +1,12 @@
 const RoutesRepository = require('../repository/routesRepository');
 
 class RoutesServices{
+    constructor() {
+        this.routesRepository = new RoutesRepository();
+    }
     async findAllRoutes(){
     try{
-        const routes = await RoutesRepository.findAllRoutes();
+        const routes = await this.routesRepository.findAllRoutes();
         return routes;
     }
     catch (error) {

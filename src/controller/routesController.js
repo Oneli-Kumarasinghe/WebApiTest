@@ -3,7 +3,7 @@ const RoutesServices =  require('../service/routesService');
 class routesController{
     async findAllroutes(req,res){
         try{
-            const routesOfAll = await RoutesServices.findAll();
+            const routesOfAll = await RoutesServices.findAllRoutes();
             res.status(201).json({routesOfAll});
             console.log('routes fetched successfully');
         }

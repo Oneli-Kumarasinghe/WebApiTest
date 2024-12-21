@@ -2,7 +2,7 @@ const routesModel = require('../model/routesModel');
 
 class RoutesRepository {
     async findAllRoutes(){
-        return await routesModel.findAll()
+        return await routesModel.findAll();
       }
 }
 module.exports = RoutesRepository;
