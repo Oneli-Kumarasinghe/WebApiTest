@@ -4,7 +4,7 @@ class routesController{
     async findAllroutes(req,res){
         try{
             const routesOfAll = await RoutesServices.findAll();
-            res.status(201).json({allRoutes});
+            res.status(201).json({getRoutes});
             console.log('routes fetched successfully');
         }
         catch{
