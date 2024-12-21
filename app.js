@@ -3,13 +3,12 @@ const {connectionTest} = require("./src/config/database");
 const app = express();
 const port = process.env.PORT || 3001;
 
-const passengerRoutes = require('./src/routes/passengerRoutes');
-const routesRoutes = require('./src/routes/routesRoutes');
+const passengerRoutes = require('./src/routes/passengerRoutes'); 
+const routesRoutes = require('./src/routes/routesRoutes'); 
+app.use(express.json()); // Middleware for JSON parsing 
 
-
-app.use(express.json());
-app.use('/passenger',passengerRoutes);
-app.use('/routes',routesRoutes);
+app.use('/passenger', passengerRoutes); 
+app.use('/routes', routesRoutes);
 app.use
 
 /*(async () => {

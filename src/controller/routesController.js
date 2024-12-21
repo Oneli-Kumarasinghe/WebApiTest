@@ -1,16 +1,15 @@
-const RoutesServices =  require('../service/routesService');
+const RoutesService = require('../service/routesService');
 
-class routesController{
-    async findAllroutes(req,res){
-        try{
-            const routesOfAll = await RoutesServices.findAllRoutes();
-            res.status(201).json({routesOfAll});
-            console.log('routes fetched successfully');
-        }
-        catch{
-            res.status(400).json({error: error.message});
-            console.log('routes were not successfully fetched');
+class RoutesController {
+    async findAllRoutes(req, res) {
+        try {
+            const allRoutes = await RoutesService.findAllRoutes();
+            res.status(200).json({ routes: allRoutes });
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+            
         }
     }
 }
-module.exports = new routesController();
+
+module.exports = new RoutesController();
