@@ -5,10 +5,12 @@ const port = process.env.PORT || 3001;
 
 const passengerRoutes = require('./src/routes/passengerRoutes'); 
 const routesRoutes = require('./src/routes/routesRoutes'); 
+const timeScheduleRoutes = require('./src/routes/timeScheduleRoutes');
 app.use(express.json()); // Middleware for JSON parsing 
 
 app.use('/passenger', passengerRoutes); 
 app.use('/routes', routesRoutes);
+app.use('/timeschedules',timeScheduleRoutes)
 app.use
 
 /*(async () => {
