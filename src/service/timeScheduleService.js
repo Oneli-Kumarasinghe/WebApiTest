@@ -1,13 +1,11 @@
 const timeScheduleRepository = require('../repository/timeScheduleRepository');
 
 class timeScheduleService {
-    constructor() {
-        this.timeScheduleRepository = new timeScheduleRepository();
-    }
+    
 
-    async findAllSchedulesWithRouteId() {
+    async findAllSchedulesWithRouteId(route_id) {
         try {
-            const schedules = await this.timeScheduleRepository.findingWithRouteId();
+            const schedules = await timeScheduleRepository.findingWithRouteId(route_id);
             return schedules;
         } catch (error) {
             throw new Error(`Error occurred while fetching data: ${error.message}`);
