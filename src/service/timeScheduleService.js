@@ -2,7 +2,7 @@ const timeScheduleRepository = require('../repository/timeScheduleRepository');
 
 class timeScheduleService {
     constructor() {
-        this.timeScheduleRepository = new RoutesRepository();
+        this.timeScheduleRepository = new timeScheduleRepository();
     }
 
     async findAllSchedulesWithRouteId() {
