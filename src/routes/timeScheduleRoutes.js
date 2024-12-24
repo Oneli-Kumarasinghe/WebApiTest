@@ -4,7 +4,7 @@ const timeScheduleController = require('../controller/timeScheduleController');
 const router = express.Router();
 /**
  * @swagger
- * /getTimeSchedules:
+ * /timeschedules/getTimeSchedules:
  *   get:
  *     summary: Finding All Schedules with Route Id
  *     description: Finding All Schedules end point
