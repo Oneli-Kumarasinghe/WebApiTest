@@ -3,11 +3,15 @@ const {connectionTest} = require("./src/config/database");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerConfig = require('./src/swagger/swaggerConfig');
+
 const passengerRoutes = require('./src/routes/passengerRoutes'); 
 const routesRoutes = require('./src/routes/routesRoutes'); 
 const timeScheduleRoutes = require('./src/routes/timeScheduleRoutes');
-app.use(express.json()); // Middleware for JSON parsing 
 
+app.use(express.json()); // Middleware for JSON parsing 
+app.use('checking-api',swaggerUi.serve,swaggerUi.setup(swaggerConfig));
 app.use('/passenger', passengerRoutes); 
 app.use('/routes', routesRoutes);
 app.use('/timeschedules',timeScheduleRoutes)
