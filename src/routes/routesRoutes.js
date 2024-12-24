@@ -4,7 +4,7 @@ const RouteController = require('../controller/routesController');
 const routes = express.Router();
 /**
  * @swagger
- * /getRoutes:
+ * /routes/getRoutes:
  *   get:
  *     summary: Finding Routes
  *     description: Finding Route end point
