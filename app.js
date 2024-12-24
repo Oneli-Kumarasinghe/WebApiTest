@@ -11,7 +11,7 @@ const routesRoutes = require('./src/routes/routesRoutes');
 const timeScheduleRoutes = require('./src/routes/timeScheduleRoutes');
 
 app.use(express.json()); // Middleware for JSON parsing 
-app.use('checking-api',swaggerUi.serve,swaggerUi.setup(swaggerConfig));
+app.use('/checking-api',swaggerUi.serve,swaggerUi.setup(swaggerConfig));
 app.use('/passenger', passengerRoutes); 
 app.use('/routes', routesRoutes);
 app.use('/timeschedules',timeScheduleRoutes)
