@@ -10,7 +10,7 @@ const ticketpricingModel = sequelize.define('ticketpricingModel',{
       bus_type: DataTypes.STRING,
       ticketpricingModel : DataTypes.FLOAT,
     }, {
-      tableName: 'ticketpricingModel',
+      tableName: 'ticket_price',
       timestamps: false,
     });
     // Define Buses model
