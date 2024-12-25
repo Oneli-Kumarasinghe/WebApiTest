@@ -18,7 +18,7 @@ class ticketpricingRepository {
                     model: ticketpricingModel,
                     required: true,
                     as: 'ticketDetails',
-                    attributes: ['ticket_price'],
+                    attributes: ['ticketpricingModel'],
                     where: filter, // Apply filter on ticket_price
                 },
             });
