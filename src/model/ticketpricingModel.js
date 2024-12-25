@@ -1,6 +1,6 @@
 const {DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const busesModel = require('./busesModel');
+
 
 const Ticket_price = sequelize.define('ticket_price',{
     ticket_id: {
@@ -13,5 +13,12 @@ const Ticket_price = sequelize.define('ticket_price',{
       tableName: 'ticket_price',
       timestamps: false,
     });
-    Ticket_price.belongsTo(busesModel, { targetKey: 'type', foreignKey: 'bus_type', as: 'busDetails' });
+    // Define Buses model
+    const Buses = require('./busesModel');
+
+    // Association: Ticket_price belongs to Buses by bus_type
+    Ticket_price.belongsTo(Buses, {
+    foreignKey: 'bus_type',
+    targetKey: 'type', // 'type' in Buses model
+    });
     module.exports = Ticket_price;

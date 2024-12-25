@@ -1,6 +1,6 @@
 const {DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const ticketpriceModel = require('./ticketpricingModel');
+
 
 const Buses = sequelize.define('buses',{
     ntc_registered_number: {
@@ -17,6 +17,5 @@ const Buses = sequelize.define('buses',{
       tableName: 'buses',
       timestamps: false,
     });
-    Buses.hasOne(ticketpriceModel, { sourceKey: 'type', foreignKey: 'bus_type', as: 'ticketDetails' });
     
     module.exports = Buses;
