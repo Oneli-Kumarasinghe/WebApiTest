@@ -6,7 +6,7 @@ const ticketpricingService = require('../service/ticketpricingService');
 router.get('/filtered-buses', async (req, res) => {
     try {
         const filter = {
-            ticket_price: { [require('sequelize').Op.gt]: req.query.minPrice || 20 },
+            ticketpricingModel: { [require('sequelize').Op.gt]: req.query.minPrice || 20 },
         };
 
         const busesDTO = await ticketpricingService.getFilteredBusesWithPrices(filter);

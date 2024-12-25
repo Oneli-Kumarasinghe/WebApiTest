@@ -15,7 +15,7 @@ class ticketpricingRepository {
                     'conductor_id',
                 ],
                 include: {
-                    model: Ticket_price,
+                    model: ticketpricingModel,
                     required: true,
                     as: 'ticketDetails',
                     attributes: ['ticket_price'],
