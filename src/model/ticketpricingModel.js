@@ -8,7 +8,7 @@ const ticketpricingModel = sequelize.define('ticketpricingModel',{
         primaryKey: true,
       },
       bus_type: DataTypes.STRING,
-      ticketpricingModel : DataTypes.FLOAT,
+      ticket_price : DataTypes.FLOAT,
     }, {
       tableName: 'ticket_price',
       timestamps: false,
