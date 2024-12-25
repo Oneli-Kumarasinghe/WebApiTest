@@ -1,6 +1,6 @@
 const {DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const ticketpricingModel = require('./ticketpricingModel');
+
 
 
 const Buses = sequelize.define('buses',{
@@ -19,7 +19,7 @@ const Buses = sequelize.define('buses',{
       timestamps: false,
     });
 
-    Buses.hasMany(ticketpricingModel, {
+    Buses.hasMany(require('./ticketpricingModel'), {
         foreignKey: 'bus_type',
         sourceKey: 'type',
         as: 'ticketDetails', // Define an alias for reverse association if required
