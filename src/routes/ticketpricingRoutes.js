@@ -1,20 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const ticketpricingService = require('../service/ticketpricingService');
+const ticketpricingController = require('../controller/ticketpricingController');
 
 // Endpoint to get filtered buses
-router.get('/filtered-buses', async (req, res) => {
-    try {
-        const filter = {
-            ticketpricingModel: { [require('sequelize').Op.gt]: req.query.minPrice || 20 },
-        };
-
-        const busesDTO = await ticketpricingService.getFilteredBusesWithPrices(filter);
-        res.status(200).json({ success: true, data: busesDTO });
-    } catch (error) {
-        console.error('Error in route:', error);
-        res.status(500).json({ success: false, message: 'Internal Server Error' });
-    }
-});
+router.get('/filtered-buses', ticketpricingController.getFilteredBusesWithPrices);
 
 module.exports = router;
