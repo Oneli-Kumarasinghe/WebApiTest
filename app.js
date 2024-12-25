@@ -9,14 +9,13 @@ const swaggerConfig = require('./src/swagger/swaggerConfig');
 const passengerRoutes = require('./src/routes/passengerRoutes'); 
 const routesRoutes = require('./src/routes/routesRoutes'); 
 const timeScheduleRoutes = require('./src/routes/timeScheduleRoutes');
-const ticketpricingRoutes = require('./src/routes/ticketpricingRoutes');
 
 app.use(express.json()); // Middleware for JSON parsing 
 app.use('/checking-api',swaggerUi.serve,swaggerUi.setup(swaggerConfig));
 app.use('/passenger', passengerRoutes); 
 app.use('/routes', routesRoutes);
 app.use('/timeschedules',timeScheduleRoutes);
-app.use('/ticketing', ticketpricingRoutes);
+
 app.use
 
 /*(async () => {
