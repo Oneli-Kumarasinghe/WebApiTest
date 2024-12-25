@@ -5,12 +5,22 @@ const router = express.Router();
 /**
  * @swagger
  * /timeschedules/getTimeSchedules:
- *   get:
- *     summary: Finding All Schedules with Route Id
- *     description: Finding All Schedules end point
+ *   post:
+ *     summary: Find schedules by route ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               route_id:
+ *                 type: string
  *     responses:
  *       200:
- *         description: All Schedules Fetched Successfully .
+ *         description: Schedules fetched successfully.
+ *       500:
+ *         description: Server error.
  */
 router.get('/getTimeSchedules', timeScheduleController.findAllSchedulesWithRouteId);
 
