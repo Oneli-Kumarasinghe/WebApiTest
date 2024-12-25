@@ -4,7 +4,6 @@ const ticketpricingModel = require('../model/ticketpricingModel');
 class ticketpricingRepository {
     async getFilteredBusesWithPrices(filter) {
         try {
-            // Fetch buses with ticket price details based on the 'type' match
             return await busesModel.findAll({
                 attributes: [
                     'vehicle_register_number',
@@ -17,7 +16,7 @@ class ticketpricingRepository {
                 include: {
                     model: ticketpricingModel,
                     required: true,
-                    as: 'ticketDetails',
+                    as: 'ticketDetails', // Match alias in the association
                     attributes: ['ticket_price'],
                     where: filter, // Apply filter on ticket_price
                 },
@@ -30,4 +29,3 @@ class ticketpricingRepository {
 }
 
 module.exports = new ticketpricingRepository();
-

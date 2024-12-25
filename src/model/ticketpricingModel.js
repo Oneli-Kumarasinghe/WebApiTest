@@ -1,27 +1,16 @@
-const {DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const busesModel = require('./busesModel');
 
-
-
-const ticketpricingModel = sequelize.define('ticketpricingModel',{
+const ticketpricingModel = sequelize.define('ticketpricing', { // Corrected model name
     ticket_id: {
         type: DataTypes.STRING,
         primaryKey: true,
-      },
-      bus_type: DataTypes.STRING,
-      ticketpricingModel : DataTypes.FLOAT,
-    }, {
-      tableName: 'ticketpricingModel',
-      timestamps: false,
-    });
-    // Define Buses model
-    const Buses = require('./busesModel');
+    },
+    bus_type: DataTypes.STRING,
+    ticket_price: DataTypes.FLOAT, // Corrected field name
+}, {
+    tableName: 'ticketpricing',
+    timestamps: false,
+});
 
-    // Association: Ticket_price belongs to Buses by bus_type
-    ticketpricingModel.belongsTo(Buses, {
-    foreignKey: 'bus_type',
-    targetKey: 'type', // 'type' in Buses model
-    as: 'ticketDetails',
-    });
-    module.exports = ticketpricingModel;
+module.exports = ticketpricingModel;
