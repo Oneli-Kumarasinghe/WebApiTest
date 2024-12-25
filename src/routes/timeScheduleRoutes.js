@@ -15,7 +15,7 @@ const router = express.Router();
  *             type: object
  *             properties:
  *               route_id:
- *                 type: string
+ *                 type: integer
  *     responses:
  *       200:
  *         description: Schedules fetched successfully.
