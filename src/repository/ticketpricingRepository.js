@@ -5,7 +5,7 @@ class ticketpricingRepository {
     async getFilteredBusesWithPrices(filter) {
         try {
             // Fetch buses with ticket price details based on the 'type' match
-            return await Buses.findAll({
+            return await busesModel.findAll({
                 attributes: [
                     'vehicle_register_number',
                     'vehicle_capacity',
