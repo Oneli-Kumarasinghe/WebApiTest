@@ -5,7 +5,7 @@ const router = express.Router();
 /**
  * @swagger
  * /timeschedules/getTimeSchedules:
- *   post:
+ *   get:
  *     summary: Find schedules by route ID
  *     requestBody:
  *       required: true
