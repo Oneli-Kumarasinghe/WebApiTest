@@ -9,7 +9,7 @@ class ticketpricingRepository {
                 attributes: [
                     'vehicle_register_number',
                     'vehicle_capacity',
-                    'type',
+                    'type', // buses table column
                     'owner_id',
                     'operator_id',
                     'conductor_id',
@@ -17,9 +17,12 @@ class ticketpricingRepository {
                 include: {
                     model: ticketpricingModel,
                     required: true,
-                    as: 'ticketDetails',
+                    as: 'ticketDetails', // Alias for the included model
                     attributes: ['ticket_price'],
                     where: filter, // Apply filter on ticket_price
+                    on: {
+                        '$busesModel.type$': { [require('sequelize').Op.eq]: require('sequelize').Sequelize.col('ticketpricingModel.bus_type') }
+                    }
                 },
             });
         } catch (error) {
