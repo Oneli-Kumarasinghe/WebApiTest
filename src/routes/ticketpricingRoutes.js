@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ticketpricingService = require('../services/ticketpricingService');
+const ticketpricingService = require('../service/ticketpricingService');
 
 // Endpoint to get filtered buses
 router.get('/filtered-buses', async (req, res) => {
