@@ -18,11 +18,4 @@ const Buses = sequelize.define('buses',{
       tableName: 'buses',
       timestamps: false,
     });
-
-    Buses.hasMany(require('./ticketpricingModel'), {
-        foreignKey: 'bus_type',
-        sourceKey: 'type',
-        as: 'ticketDetails', // Define an alias for reverse association if required
-    });
-    
     module.exports = Buses;
