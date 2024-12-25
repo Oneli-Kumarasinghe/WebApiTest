@@ -6,12 +6,17 @@ class ticketpricingService {
         try {
             const busesWithPrices = await ticketpricingRepository.getFilteredBusesWithPrices(filter);
 
+            // Map the results to DTOs
             return busesWithPrices.map(bus => {
-                const ticketDetails = bus.ticketDetails[0] || {}; // Handle array result
+                const ticketDetails = bus.ticketDetails || {};
                 return new timeScheduledBusesDTO(
                     bus.vehicle_register_number,
-                    bus.type, // Replace with actual fields if necessary
-                    ticketDetails.ticket_price || 0
+                    bus.destination,
+                    bus.origin_point,
+                    bus.time_of_departure = time_of_departure,
+                    bus.time_of_arrival = time_of_arrival,
+
+                    ticketDetails.tickpricingModel || 0
                 );
             });
         } catch (error) {
