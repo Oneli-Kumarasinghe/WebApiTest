@@ -14,10 +14,10 @@ const ticketpricingModel = sequelize.define('ticketpricingModel',{
       timestamps: false,
     });
     // Define Buses model
-    const Buses = require('./busesModel');
+    const BusesModel = require('./busesModel');
 
     // Association: Ticket_price belongs to Buses by bus_type
-    ticketpricingModel.belongsTo(Buses, {
+    ticketpricingModel.belongsTo(BusesModel, {
     foreignKey: 'bus_type',
     targetKey: 'type', // 'type' in Buses model
     as: 'busDetails',
