@@ -20,5 +20,6 @@ const ticketpricingModel = sequelize.define('ticketpricingModel',{
     ticketpricingModel.belongsTo(Buses, {
     foreignKey: 'bus_type',
     targetKey: 'type', // 'type' in Buses model
+    as: 'busDetails',
     });
     module.exports = ticketpricingModel;
