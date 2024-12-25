@@ -13,8 +13,8 @@ class ticketpricingService {
                     bus.vehicle_register_number,
                     bus.destination,
                     bus.origin_point,
-                    bus.time_of_departure = time_of_departure,
-                    bus.time_of_arrival = time_of_arrival,
+                    bus.time_of_departure,
+                    bus.time_of_arrival,
 
                     ticketDetails.tickpricingModel || 0
                 );

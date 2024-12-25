@@ -1,6 +1,5 @@
 const {DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const BusesModel = require('./busesModel');
 
 const ticketpricingModel = sequelize.define('ticketpricingModel',{
     ticket_id: {
