@@ -1,5 +1,5 @@
 const ticketpricingRepository = require('../repository/ticketpricingRepository');
-const timeScheduledBusesDTO = require('../model/timeScheduledBusesDTO');
+const timeScheduledBusesDTO = require('../dataTransferObjects/timeScheduledBusesDTO');
 
 class ticketpricingService {
     async getFilteredBusesWithPrices(filter) {
