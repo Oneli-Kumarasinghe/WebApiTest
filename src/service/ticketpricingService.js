@@ -4,30 +4,23 @@ const timeScheduledBusesDTO = require('../model/timeScheduledBusesDTO');
 class ticketpricingService {
     async getFilteredBusesWithPrices(filter) {
         try {
-            // Find ticket prices matching the filter
-            const ticketPrices = await TicketPrice.findAll({ where: filter });
+            const busesWithPrices = await ticketpricingRepository.getFilteredBusesWithPrices(filter);
 
-            // Extract bus types from the ticket prices
-            const busTypes = ticketPrices.map((ticket) => ticket.bus_type);
+            // Map the results to DTOs
+            return busesWithPrices.map(bus => {
+                const ticketDetails = bus.ticketDetails || {};
+                return new timeScheduledBusesDTO(
+                    bus.vehicle_register_number,
+                    bus.destination,
+                    bus.origin_point,
+                    bus.time_of_departure = time_of_departure,
+                    bus.time_of_arrival = time_of_arrival,
 
-            // Find buses that match the filtered bus types
-            const buses = await Buses.findAll({
-                where: {
-                    type: busTypes, // Filter buses by type
-                },
+                    ticketDetails.ticket_price || 0
+                );
             });
-
-            // Format buses as DTOs
-            const busesDTO = buses.map((bus) => ({
-                vehicle_register_number: bus.vehicle_register_number,
-                type: bus.type,
-                capacity: bus.vehicle_capacity,
-                ntc_registered_number: bus.ntc_registered_number,
-            }));
-
-            return busesDTO;
         } catch (error) {
-            console.error('Error in service:', error);
+            console.error('Error in TicketPricingService:', error);
             throw error;
         }
     }
