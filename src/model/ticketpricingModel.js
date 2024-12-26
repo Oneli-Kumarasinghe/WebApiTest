@@ -16,7 +16,7 @@ const ticketpricingModel = sequelize.define('ticket_price', {
 });
 
 // Define the logical association
-TicketPrice.belongsTo(Buses, {
+ticketpricingModel.belongsTo(Buses, {
     foreignKey: 'bus_type', // Field in TicketPrice
     targetKey: 'type',      // Field in Buses
     as: 'busDetails',       // Alias for the association
