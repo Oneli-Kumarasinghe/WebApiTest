@@ -46,7 +46,7 @@
 
 // module.exports = new BusesRepository();
 
-const { Buses, TicketPrice } = require('../model/associations'); // Import models with associations
+const { Buses, TicketPricing } = require('../model/associations'); // Import models with associations
 
 class BusRepository {
     async getFilteredBusesWithPrices(filter) {
@@ -61,7 +61,7 @@ class BusRepository {
                     'conductor_id',
                 ],
                 include: {
-                    model: TicketPrice,
+                    model: TicketPricing, // Use the correct model name from associations.js
                     as: 'ticketDetails', // Alias defined in the association
                     attributes: ['ticket_price'],
                     where: filter, // Apply the filter for ticket prices
@@ -75,5 +75,6 @@ class BusRepository {
 }
 
 module.exports = new BusRepository();
+
 
 
