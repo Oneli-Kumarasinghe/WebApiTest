@@ -1,5 +1,6 @@
-const {DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+
 
 const Buses = require('./busesModel'); // Import the related model
 
@@ -23,6 +24,7 @@ ticketpricingModel.belongsTo(Buses, {
 });
 
 module.exports = ticketpricingModel;
+console.log(ticketpricingModel === sequelize.models.ticketpricingModel);
 
 // const TicketPrice = sequelize.define('ticket_price',{
 //     ticket_id: {

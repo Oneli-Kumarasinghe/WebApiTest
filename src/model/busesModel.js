@@ -27,6 +27,7 @@ Buses.hasMany(TicketPrice, {
 });
 
 module.exports = Buses;
+console.log(Buses === sequelize.models.Buses);
 
 // const Buses = sequelize.define('buses',{
 //     ntc_registered_number: {
