@@ -1,5 +1,5 @@
 const busService = require('../service/busesService');
-//const { Op } = require('sequelize');
+const { Op } = require('sequelize');
 
 class BusesController {
     // /**
