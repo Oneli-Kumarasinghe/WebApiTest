@@ -1,4 +1,4 @@
-const busRepository = require('../repository/busesRepository');
+const BusRepository = require('../repository/busesRepository');
 
 class BusService {
     // /**
