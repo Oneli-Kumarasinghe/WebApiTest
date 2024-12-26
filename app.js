@@ -11,7 +11,7 @@ const routesRoutes = require('./src/routes/routesRoutes');
 const timeScheduleRoutes = require('./src/routes/timeScheduleRoutes');
 const busRoutes = require('./src/routes/busesRoutes');
 
-app.use(express.json()); // Middleware for JSON parsing 
+app.use(express.json()); 
 app.use('/checking-api',swaggerUi.serve,swaggerUi.setup(swaggerConfig));
 app.use('/passenger', passengerRoutes); 
 app.use('/routes', routesRoutes);
@@ -20,15 +20,7 @@ app.use('/buses', busRoutes);
 
 app.use
 
-/*(async () => {
-  try {
-    await connectionTest();
-    console.log("Database connection successful!");
-  } catch (error) {
-    console.error("Database connection failed:", error);
-    process.exit(1); 
-  }
-})();*/
+
 
 
 const html = `
