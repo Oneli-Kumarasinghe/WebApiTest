@@ -1,4 +1,4 @@
-const busService = require('../service/busesService');
+const BusService = require('../service/busesService');
 const { Op } = require('sequelize');
 
 class BusesController {
