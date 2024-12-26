@@ -46,8 +46,7 @@
 
 // module.exports = new BusesRepository();
 
-const Buses = require('../model/busesModel');
-const TicketPrice = require('../model/ticketpricingModel');
+const { Buses, TicketPrice } = require('../model/associations'); // Import models with associations
 
 class BusRepository {
     async getFilteredBusesWithPrices(filter) {
@@ -76,4 +75,5 @@ class BusRepository {
 }
 
 module.exports = new BusRepository();
+
 
