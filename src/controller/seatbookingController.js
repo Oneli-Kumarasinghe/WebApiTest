@@ -5,6 +5,8 @@ class BookingController {
         try {
             const payload = req.body;
             const newBooking = await seatBookingService.seatBooking(payload);
+
+           
             return res.status(201).json({
                 message: newBooking.message,
                 booking_ids: newBooking.booking_ids,
@@ -12,10 +14,14 @@ class BookingController {
             });
         } catch (error) {
             console.error('Error creating booking:', error);
-            if (error.status) {
-                return res.status(error.status).json({ message: error.message, details: error.unavailableSeats || undefined });
+
+            
+            if (error instanceof Error && error.status) {
+                return res.status(error.status).json({ message: error.message, details: error.details || undefined });
             }
-            return res.status(500).json({ message: 'Internal Server Error', error });
+
+           
+            return res.status(500).json({ message: 'Internal Server Error', error: error.message || error });
         }
     }
 }
