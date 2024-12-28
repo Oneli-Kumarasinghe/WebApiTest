@@ -1,4 +1,4 @@
-const Payment = require('../model/passengerModel');
+const Payment = require('../model/paymentModel');
 
 class PaymentRepository {
     async save(paymentData) {
