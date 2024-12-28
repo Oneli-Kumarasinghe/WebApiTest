@@ -5,6 +5,7 @@ const Payment = sequelize.define('payment', {
     payment_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     passenger_id: DataTypes.STRING,
     total_amount: DataTypes.FLOAT,
