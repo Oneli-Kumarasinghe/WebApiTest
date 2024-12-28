@@ -10,6 +10,7 @@ const passengerRoutes = require('./src/routes/passengerRoutes');
 const routesRoutes = require('./src/routes/routesRoutes'); 
 const timeScheduleRoutes = require('./src/routes/timeScheduleRoutes');
 const busRoutes = require('./src/routes/busesRoutes');
+const seatbookingRoutes = require('./src/routes/seatBookingRoute');
 
 app.use(express.json()); 
 app.use('/checking-api',swaggerUi.serve,swaggerUi.setup(swaggerConfig));
@@ -17,6 +18,7 @@ app.use('/passenger', passengerRoutes);
 app.use('/routes', routesRoutes);
 app.use('/timeschedules',timeScheduleRoutes);
 app.use('/buses', busRoutes);
+app.use('/seatbooking', seatbookingRoutes);
 
 app.use
 
