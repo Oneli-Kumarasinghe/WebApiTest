@@ -36,7 +36,7 @@ class SeatBookingService {
                             seat_number,
                             date_of_booking
                         };
-                        const bookingId = await seatbookingRepository.save(bookingData);
+                        const bookingId = await BookingRepository.save(bookingData);
                         bookingIds.push(bookingId);
                     }
                     return {
