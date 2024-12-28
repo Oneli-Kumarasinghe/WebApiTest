@@ -1,6 +1,4 @@
 const BookingRepository = require('../repository/seatbookingRepository');
-const SeatingUtil = require('../utils/seatingUtil')
-const PaymentRepository = require('../repository/paymentRepository');
 const paymentRepository = require('../repository/paymentRepository');
 
 class SeatBookingService {

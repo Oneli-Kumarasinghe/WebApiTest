@@ -45,4 +45,4 @@ const Double_Decker = [
     { seatNumber: 'F6' }
   ];
 
-  export default{Double_Decker,Coach,Mini_Bus};
+  module.exports = {Double_Decker,Coach,Mini_Bus};
