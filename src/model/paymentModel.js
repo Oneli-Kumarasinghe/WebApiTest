@@ -9,7 +9,7 @@ const Payment = sequelize.define('payment', {
     },
     passenger_id: DataTypes.STRING,
     total_amount: DataTypes.FLOAT,
-    payment_time: DataTypes.TIME,
+    payment_time: DataTypes.DATE,
     
 }, {
     tableName: 'payment',
