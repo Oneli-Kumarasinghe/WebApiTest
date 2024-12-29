@@ -38,14 +38,15 @@ class BookingRepository {
                     schedule_slot: schedule_slot,
                     date_of_booking: date_of_booking,
                 },
-                attributes: ['seat_number'],
+                attributes: ['seat_number'], 
             });
-            return bookedSeats.map(seat => seat.seat_no);
+            return bookedSeats.map(seat => seat.seat_number);
         } catch (error) {
             console.error(error);
             return [];
         }
     }
+    
 }
 
 module.exports = new BookingRepository();
