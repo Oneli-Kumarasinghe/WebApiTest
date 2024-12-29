@@ -21,7 +21,7 @@ class SeatBookingService {
             
             if (seatAvailability.length > 0) { 
                 const paymentTime = new Date();
-                const paymentData = { passenger_id, total_amount, paymentTime };
+                const paymentData = { passenger_id, total_amount, payment_time: paymentTime };
                 
                 const paymentId = await paymentRepository.save(paymentData); 
                 
