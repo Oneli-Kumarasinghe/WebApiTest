@@ -30,16 +30,17 @@ class BusRepository {
         try {
             const type = await BusRepository.findOne({
                 where: {
-                    bus_number_plate:bus_number_plate ,
+                    bus_number_plate: bus_number_plate, 
                 },
-                attributes: ['type'],
+                attributes: ['type'], 
             });
-            return type ? type.type : null;
+            return type ? type.type : null; 
         } catch (error) {
-            console.error(error);
+            console.error('Error fetching bus type:', error);
             return null;
         }
     }
+    
 }
 
 module.exports = new BusRepository();
