@@ -1,34 +1,31 @@
 const sequelize = require('../config/database'); // Ensure the correct path to your database configuration
 const { QueryTypes } = require('sequelize');
 const Booking = require('../model/bookingModel');
+const { Buses, TicketPricing } = require('../model/associations'); 
 
 class BookingRepository {
 
-    /**
-     * Fetch seat numbers booked for a given bus, schedule slot, and booking date.
-     * @param {string} bus_number_plate - Bus registration number.
-     * @param {number} schedule_slot - Schedule slot.
-     * @param {string} date_of_booking - Date of booking.
-     * @returns {Promise<string[]>} - Array of seat numbers.
-     */
-    async getNumberOfSeatings(bus_number_plate, schedule_slot, date_of_booking) {
+    async getFilteredBusesWithPrices(filter) {
         try {
-            const results = await sequelize.query(
-                `SELECT seat_number 
-                 FROM bookings 
-                 WHERE bus_number_plate = :bus_number_plate 
-                   AND schedule_slot = :schedule_slot 
-                   AND date_of_booking = :date_of_booking`,
-                {
-                    replacements: { bus_number_plate, schedule_slot, date_of_booking },
-                    type: QueryTypes.SELECT,
-                }
-            );
-
-            return results.map(row => row.seat_number);
+            return await Buses.findAll({
+                attributes: [
+                    'vehicle_register_number',
+                    'vehicle_capacity',
+                    'type',
+                    'owner_id',
+                    'operator_id',
+                    'conductor_id',
+                ],
+                include: {
+                    model: TicketPricing, 
+                    as: 'ticketDetails', 
+                    attributes: ['ticket_price'],
+                    where: filter, 
+                },
+            });
         } catch (error) {
-            console.error('Error fetching booked seats:', error);
-            return [];
+            console.error('Error in BusRepository:', error);
+            throw error;
         }
     }
 
