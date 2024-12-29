@@ -32,7 +32,7 @@ class BusRepository {
 
     async getTypeOfBusByVehicleRegistrationNumber(vehicle_register_number) {
         try {
-            const type = await BusRepository.findOne({
+            const type = await Buses.findOne({
                 where: {
                     vehicle_register_number: vehicle_register_number, 
                 },
