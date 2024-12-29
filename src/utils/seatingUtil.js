@@ -20,4 +20,4 @@ class seatingUtils {
   }
 }
 
-export default seatingUtils;
+module.exports = new seatingUtils();
