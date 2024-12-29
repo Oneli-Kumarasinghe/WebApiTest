@@ -1,4 +1,5 @@
 const Booking = require('../model/bookingModel'); 
+const { QueryTypes } = require('sequelize');
 
 class BookingRepository {
     async getNumberOfSeatings(bus_number_plate, schedule_slot, date_of_booking) {
