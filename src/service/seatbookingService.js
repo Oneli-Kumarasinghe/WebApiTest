@@ -59,31 +59,31 @@ class SeatBookingService {
         }
     }
 
-async getAvailableSeatings(vehicle_register_number, schedule_slot, date_of_booking){
+async getAvailableSeatings(bus_number_plate, schedule_slot, date_of_booking){
         try {
             console.log("request came to fetch seats availabilty information")
-            const type = await busesRepository.getFilteredBusesWithPrices(vehicle_register_number);
+            const type = await busesRepository.getFilteredBusesWithPrices(bus_number_plate);
             console.log(`retreiving the type of the bus `, type);
             if (!type) {
                 console.error("No bus registered to this registration number");
                 return [];
             }
             if (type === 'Double Decker') {
-                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
+                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(bus_number_plate, schedule_slot, date_of_booking);
                 const seatingsAvailable = await seatingUtils.DoubleDeckerFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
             }
             
             else if (type === 'Coach') {
-                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
+                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(bus_number_plate, schedule_slot, date_of_booking);
                 const seatingsAvailable = await seatingUtils.CoachFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
             }
 
             else if (type === 'Mini Bus') {
-                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
+                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(bus_number_plate, schedule_slot, date_of_booking);
                 const seatingsAvailable = await seatingUtils.MiniBusFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
