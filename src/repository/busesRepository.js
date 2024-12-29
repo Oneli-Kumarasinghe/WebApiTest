@@ -2,29 +2,21 @@
 const { Buses, TicketPricing } = require('../model/associations'); 
 
 class BusRepository {
-    async getFilteredBusesWithPrices(filter) {
+    async getFilteredBusesWithPrices(bus_number_plate) {
         try {
-            return await Buses.findAll({
-                attributes: [
-                    'vehicle_register_number',
-                    'vehicle_capacity',
-                    'type',
-                    'owner_id',
-                    'operator_id',
-                    'conductor_id',
-                ],
-                include: {
-                    model: TicketPricing, 
-                    as: 'ticketDetails', 
-                    attributes: ['ticket_price'],
-                    where: filter, 
+            const busesWithPrices = await buses.findAll({
+                where: {
+                    bus_number_plate: { [Sequelize.Op.eq]: bus_number_plate }, // Use Sequelize operator
                 },
+                attributes: ['type', 'price'],
             });
+            return busesWithPrices;
         } catch (error) {
-            console.error('Error in BusRepository:', error);
+            console.error('Error fetching buses:', error);
             throw error;
         }
     }
+    
 
     async getTypeOfBusByVehicleRegistrationNumber(bus_number_plate) {
         try {
