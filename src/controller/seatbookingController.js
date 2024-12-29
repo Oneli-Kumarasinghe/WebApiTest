@@ -27,16 +27,16 @@ class BookingController {
 
     async getAvailableSeatings(req, res) {
         try {
-            const { vehicle_register_number, schedule_slot, date_of_booking } = req.body;
+            const { bus_number_plate, schedule_slot, date_of_booking } = req.body;
     
-            if (!vehicle_register_number || !schedule_slot || !date_of_booking) {
+            if (!bus_number_plate || !schedule_slot || !date_of_booking) {
                 res.status(400).json({ message: "Missing required fields in the request body." });
                 console.log("Missing required fields in the request body.");
                 return;
             }
     
-            console.log(`Fetching available seats for vehicle: ${vehicle_register_number}, schedule slot: ${schedule_slot}, date: ${date_of_booking}`);
-            const seatingsAvailable = await seatBookingService.getAvailableSeatings(vehicle_register_number, schedule_slot, date_of_booking);
+            console.log(`Fetching available seats for vehicle: ${bus_number_plate}, schedule slot: ${schedule_slot}, date: ${date_of_booking}`);
+            const seatingsAvailable = await seatBookingService.getAvailableSeatings(bus_number_plate, schedule_slot, date_of_booking);
     
             if (Array.isArray(seatingsAvailable) && seatingsAvailable.length > 0) {
                 res.status(200).json(seatingsAvailable);

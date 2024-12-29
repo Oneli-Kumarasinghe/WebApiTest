@@ -7,7 +7,7 @@ class BusService {
             const busesWithPrices = await BusRepository.getFilteredBusesWithPrices(filter);
             return busesWithPrices.map(bus => {
                 return {
-                    vehicle_register_number: bus.vehicle_register_number,
+                    bus_number_plate: bus.bus_number_plate,
                     vehicle_capacity: bus.vehicle_capacity,
                     type: bus.type,
                     owner_id: bus.owner_id,

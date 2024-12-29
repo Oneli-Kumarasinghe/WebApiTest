@@ -6,7 +6,7 @@ const Buses = sequelize.define('buses', {
         type: DataTypes.STRING,
         primaryKey: true,
     },
-    vehicle_register_number: DataTypes.STRING,
+    bus_number_plate: DataTypes.STRING,
     vehicle_capacity: DataTypes.INTEGER,
     type: DataTypes.STRING,
     owner_id: DataTypes.STRING,

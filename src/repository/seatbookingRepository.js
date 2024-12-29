@@ -30,12 +30,12 @@ class BookingRepository {
         }
     }
 
-    async gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, scheduled_slot, date_of_booking) {
+    async gettingNumberofSeatsWithVehicleRegistrationNumberTime(bus_number_plate, schedule_slot, date_of_booking) {
         try {
             const NumberOfSeatingsBooked = await BookingRepository.findAll({
                 where: {
-                    vehicle_register_number: vehicle_register_number,
-                    scheduled_slot: scheduled_slot,
+                    bus_number_plate:bus_number_plate,
+                    schedule_slot: schedule_slot,
                     date_of_booking: date_of_booking,
                 },
                 attributes: ['seat_number'],

@@ -26,11 +26,11 @@ class BusRepository {
         }
     }
 
-    async getTypeOfBusByVehicleRegistrationNumber(vehicle_register_number) {
+    async getTypeOfBusByVehicleRegistrationNumber(bus_number_plate) {
         try {
             const type = await BusRepository.findOne({
                 where: {
-                    vehicle_register_number:vehicle_register_number ,
+                    bus_number_plate:bus_number_plate ,
                 },
                 attributes: ['type'],
             });

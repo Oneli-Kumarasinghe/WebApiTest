@@ -17,10 +17,10 @@ class SeatBookingService {
     }
     
     async seatBooking(payload) {
-        const { passenger_id, seat_number_list, bus_number_plate, scheduled_slot, total_amount, date_of_booking } = payload;
+        const { passenger_id, seat_number_list, bus_number_plate, schedule_slot, total_amount, date_of_booking } = payload;
         
         try {
-            const seatAvailability = await this.availableSeats(seat_number_list, bus_number_plate, scheduled_slot, date_of_booking);
+            const seatAvailability = await this.availableSeats(seat_number_list, bus_number_plate, schedule_slot, date_of_booking);
             
             if (seatAvailability.length > 0) { 
                 const paymentTime = new Date();
