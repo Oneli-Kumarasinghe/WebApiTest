@@ -1,21 +1,30 @@
 const Booking = require('../model/bookingModel'); 
 
 class BookingRepository {
-    async getNumberOfSeatings(bus_number_plate, schedule_slot,date_of_booking) {
+    async getNumberOfSeatings(bus_number_plate, schedule_slot, date_of_booking) {
         try {
-            const seatsBooked = await Booking.findAll({
-                where: {
-                    bus_number_plate: bus_number_plate,
-                    schedule_slot: schedule_slot,
-                    date_of_booking: date_of_booking,
-                },
-                attributes: ['seat_number'],
-            });
-    
-           
-            return seatsBooked.map(seat => seat.seat_number);
+            const [results] = await sequelize.query(
+                `
+                SELECT seat_number 
+                FROM bookings 
+                WHERE bus_number_plate = :bus_number_plate 
+                  AND schedule_slot = :schedule_slot 
+                  AND date_of_booking = :date_of_booking
+                `,
+                {
+                    replacements: {
+                        bus_number_plate,
+                        schedule_slot,
+                        date_of_booking,
+                    },
+                    type: Sequelize.QueryTypes.SELECT,
+                }
+            );
+            
+            // Extract seat numbers from results
+            return results.map(row => row.seat_number);
         } catch (error) {
-            console.error(error);
+            console.error('Error fetching booked seats:', error);
             return [];
         }
     }
