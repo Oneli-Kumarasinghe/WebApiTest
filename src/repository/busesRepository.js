@@ -1,6 +1,7 @@
 
 const { Buses, TicketPricing } = require('../model/associations'); 
 const busesModel = require('../model/busesModel');
+const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 class BusRepository {
