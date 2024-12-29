@@ -35,7 +35,7 @@ class SeatBookingService {
                             passenger_id,
                             payment_slip_id: paymentId,  
                             bus_number_plate,
-                            schedule_slot: scheduled_slot,
+                            schedule_slot: schedule_slot,
                             seat_number,
                             date_of_booking
                         };
