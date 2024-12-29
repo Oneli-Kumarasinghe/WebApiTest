@@ -68,24 +68,27 @@ async getAvailableSeatings(vehicle_register_number, schedule_slot, date_of_booki
                 console.error("No bus registered to this registration number");
                 return [];
             }
-            if (type === 'Mini Bus') {
+            if (type === 'Double Decker') {
                 const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
-                const seatingsAvailable = await seatingUtils.MiniBusFiltering(seatingsBooked);
+                const seatingsAvailable = await seatingUtils.DoubleDeckerFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
             }
+            
             else if (type === 'Coach') {
                 const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
                 const seatingsAvailable = await seatingUtils.CoachFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
             }
-            else if (type === 'Double Decker') {
+
+            else if (type === 'Mini Bus') {
                 const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
-                const seatingsAvailable = await seatingUtils.DoubleDeckerFiltering(seatingsBooked);
+                const seatingsAvailable = await seatingUtils.MiniBusFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
             }
+            
 
         } catch (error) {
             console.error("While fetching an error occured :", error);
