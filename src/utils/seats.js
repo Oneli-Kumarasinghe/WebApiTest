@@ -45,4 +45,8 @@ const Double_Decker = [
     { seatNumber: 'F6' }
   ];
 
-  module.exports = {Double_Decker,Coach,Mini_Bus};
+  module.exports = {
+    Double_Decker,
+    Coach,
+    Mini_Bus,
+};

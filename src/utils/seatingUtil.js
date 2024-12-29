@@ -1,4 +1,5 @@
-import { Double_Decker, Coach, Mini_Bus } from './seats.js';
+const { Double_Decker, Coach, Mini_Bus } = require('./seats');
+
 
 class seatingUtils {
   async DoubleDeckerFiltering(BookSeats = []) {
