@@ -1,5 +1,6 @@
 const express = require('express');
 const timeScheduleController = require('../controller/timeScheduleController');
+const authenticationJason = require('../config/jasonwebtoken');
 
 const router = express.Router();
 /**
@@ -22,6 +23,6 @@ const router = express.Router();
  *       500:
  *         description: Server error.
  */
-router.get('/getTimeSchedules', timeScheduleController.findAllSchedulesWithRouteId);
+router.get('/getTimeSchedules', authenticationJason, timeScheduleController.findAllSchedulesWithRouteId);
 
 module.exports = router;

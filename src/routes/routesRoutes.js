@@ -1,5 +1,6 @@
 const express = require('express');
 const RouteController = require('../controller/routesController');
+const authenticationJason = require('../config/jasonwebtoken');
 
 const routes = express.Router();
 /**
@@ -12,6 +13,6 @@ const routes = express.Router();
  *       200:
  *         description: All Routes Fetched Successfully .
  */
-routes.get('/getRoutes', RouteController.findAllRoutes);
+routes.get('/getRoutes',authenticationJason, RouteController.findAllRoutes);
 
 module.exports = routes;
