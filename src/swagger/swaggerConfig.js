@@ -14,8 +14,22 @@ const swaggerOptions = {
         description: 'Transport Seat Reservation Service System',
       },
     ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT', // Specify JWT format
+        },
+      },
+    },
+    security: [
+      {
+        BearerAuth: [], // Apply BearerAuth globally to all endpoints
+      },
+    ],
   },
-  apis: ['./src/routes/*.js'], 
+  apis: ['./src/routes/*.js'], // Path to the route files
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
