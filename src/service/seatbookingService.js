@@ -2,7 +2,7 @@ const BookingRepository = require('../repository/seatbookingRepository');
 const paymentRepository = require('../repository/paymentRepository');
 const busesRepository = require('../repository/busesRepository');
 const seatbookingRepository = require('../repository/seatbookingRepository');
-const { default: seatingUtils } = require('../utils/seatingUtil');
+const seatingUtils = require('../utils/seatingUtil');
 
 class SeatBookingService {
     async availableSeats(seating = [], VehicleNumber, SlotsAllocated, date_of_booking) {
