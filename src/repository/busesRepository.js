@@ -25,6 +25,21 @@ class BusRepository {
             throw error;
         }
     }
+
+    async getTypeOfBusByVehicleRegistrationNumber(vehicle_register_number) {
+        try {
+            const type = await BusRepository.findOne({
+                where: {
+                    vehicle_register_number:vehicle_register_number ,
+                },
+                attributes: ['type'],
+            });
+            return type ? type.type : null;
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    }
 }
 
 module.exports = new BusRepository();

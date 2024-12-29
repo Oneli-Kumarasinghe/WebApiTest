@@ -1,5 +1,8 @@
 const BookingRepository = require('../repository/seatbookingRepository');
 const paymentRepository = require('../repository/paymentRepository');
+const busesRepository = require('../repository/busesRepository');
+const seatbookingRepository = require('../repository/seatbookingRepository');
+const { default: seatingUtils } = require('../utils/seatingUtil');
 
 class SeatBookingService {
     async availableSeats(seating = [], VehicleNumber, SlotsAllocated, date_of_booking) {
@@ -53,6 +56,40 @@ class SeatBookingService {
         } catch (error) {
             console.error('Error during seat booking:', error);
             throw error;
+        }
+    }
+
+async getAvailableSeatings(vehicle_register_number, schedule_slot, date_of_booking){
+        try {
+            console.log("request came to fetch seats availabilty information")
+            const type = await busesRepository.getFilteredBusesWithPrices(vehicle_register_number);
+            console.log(`retreiving the type of the bus `, type);
+            if (!type) {
+                console.error("No bus registered to this registration number");
+                return [];
+            }
+            if (type === 'Mini Bus') {
+                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
+                const seatingsAvailable = await seatingUtils.MiniBusFiltering(seatingsBooked);
+                console.log("available seats successfully fetched ->", seatingsAvailable);
+                return seatingsAvailable;
+            }
+            else if (type === 'Coach') {
+                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
+                const seatingsAvailable = await seatingUtils.CoachFiltering(seatingsBooked);
+                console.log("available seats successfully fetched ->", seatingsAvailable);
+                return seatingsAvailable;
+            }
+            else if (type === 'Double Decker') {
+                const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(vehicle_register_number, schedule_slot, date_of_booking);
+                const seatingsAvailable = await seatingUtils.DoubleDeckerFiltering(seatingsBooked);
+                console.log("available seats successfully fetched ->", seatingsAvailable);
+                return seatingsAvailable;
+            }
+
+        } catch (error) {
+            console.error("While fetching an error occured :", error);
+            return [];
         }
     }
 
