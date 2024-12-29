@@ -85,6 +85,7 @@ async getAvailableSeatings(vehicle_register_number, schedule_slot, date_of_booki
 
             else if (type === 'Mini Bus') {
                 const seatingsBooked = await seatbookingRepository.getListofBookedSeats(vehicle_register_number, schedule_slot, date_of_booking);
+                console.log("booked seats ", seatingsBooked);
                 const seatingsAvailable = await seatingUtils.MiniBusFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
