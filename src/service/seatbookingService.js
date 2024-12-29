@@ -70,6 +70,7 @@ async getAvailableSeatings(bus_number_plate, schedule_slot, date_of_booking){
             }
             if (type === 'Double Decker') {
                 const seatingsBooked = await seatbookingRepository.gettingNumberofSeatsWithVehicleRegistrationNumberTime(bus_number_plate, schedule_slot, date_of_booking);
+                console.log("fetched booked seats->", seatingsAvailable);
                 const seatingsAvailable = await seatingUtils.DoubleDeckerFiltering(seatingsBooked);
                 console.log("available seats successfully fetched ->", seatingsAvailable);
                 return seatingsAvailable;
