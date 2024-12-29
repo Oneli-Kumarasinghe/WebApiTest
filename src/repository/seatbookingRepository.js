@@ -32,7 +32,7 @@ class BookingRepository {
     
     async getListofBookedSeats(bus_number_plate, schedule_slot, date_of_booking) {
         try {
-            const bookedSeats = await PassengerBookings.findAll({
+            const bookedSeats = await Booking.findAll({
                 where: {
                     bus_number_plate: bus_number_plate,
                     schedule_slot: schedule_slot,
