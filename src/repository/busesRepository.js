@@ -5,22 +5,26 @@ const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 class BusRepository {
-    async getFilteredBusesWithPrices(bus_number_plate) {
+    async getFilteredBusesWithPrices(filter) {
         try {
-            const results = await sequelize.query(
-                `
-                SELECT type, price
-                FROM buses
-                WHERE bus_number_plate = :bus_number_plate
-                `,
-                {
-                    replacements: { bus_number_plate },
-                    type: QueryTypes.SELECT,
-                }
-            );
-            return results;
+            return await Buses.findAll({
+                attributes: [
+                    'vehicle_register_number',
+                    'vehicle_capacity',
+                    'type',
+                    'owner_id',
+                    'operator_id',
+                    'conductor_id',
+                ],
+                include: {
+                    model: TicketPricing, 
+                    as: 'ticketDetails', 
+                    attributes: ['ticket_price'],
+                    where: filter, 
+                },
+            });
         } catch (error) {
-            console.error('Error fetching buses with raw query:', error);
+            console.error('Error in BusRepository:', error);
             throw error;
         }
     }
