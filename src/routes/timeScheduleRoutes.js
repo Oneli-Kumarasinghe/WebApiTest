@@ -23,6 +23,6 @@ const router = express.Router();
  *       500:
  *         description: Server error.
  */
-router.get('/getTimeSchedules', authenticationJason, timeScheduleController.findAllSchedulesWithRouteId);
+router.post('/getTimeSchedules', authenticationJason, timeScheduleController.findAllSchedulesWithRouteId);
 
 module.exports = router;
