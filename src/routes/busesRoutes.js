@@ -5,31 +5,34 @@ const authenticationJason = require('../config/jasonwebtoken');
 
 /**
  * @swagger
- * /buses/filtered-buses:
- *   post:
+ * /buses/filtered-buses/{bus_type}/{minPrice}/{maxPrice}:
+ *   get:
  *     summary: Get filtered buses with price range
  *     description: Retrieve buses filtered by type and price range. JWT token is required for authentication.
  *     security:
  *       - BearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               bus_type:
- *                 type: string
- *                 description: Type of the bus.
- *                 example: "Double Decker"
- *               minPrice:
- *                 type: number
- *                 description: Minimum price of the bus tickets.
- *                 example: 1000
- *               maxPrice:
- *                 type: number
- *                 description: Maximum price of the bus tickets.
- *                 example: 12500
+ *     parameters:
+ *       - in: path
+ *         name: bus_type
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Type of the bus.
+ *         example: "Double Decker"
+ *       - in: path
+ *         name: minPrice
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: Minimum price of the bus tickets.
+ *         example: 1000
+ *       - in: path
+ *         name: maxPrice
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: Maximum price of the bus tickets.
+ *         example: 12500
  *     responses:
  *       200:
  *         description: Successfully fetched filtered buses.
@@ -59,6 +62,7 @@ const authenticationJason = require('../config/jasonwebtoken');
  *       500:
  *         description: Internal server error.
  */
-router.get('/filtered-buses', authenticationJason, busController.getFilteredBusesWithPrices);
+router.get('/filtered-buses/:bus_type/:minPrice/:maxPrice', authenticationJason, busController.getFilteredBusesWithPrices);
+
 
 module.exports = router;

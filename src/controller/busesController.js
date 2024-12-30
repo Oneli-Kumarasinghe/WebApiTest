@@ -30,7 +30,7 @@ class BusesController {
 
     async getFilteredBusesWithPrices(req, res) {
         try {
-            const { bus_type, minPrice, maxPrice } = req.body;
+            const { bus_type, minPrice, maxPrice } = req.params;
 
             // Build the filter object dynamically
             const filter = {
